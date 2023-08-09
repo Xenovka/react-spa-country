@@ -32,6 +32,7 @@ export default function App() {
 
   // state to keep track of the search result from the search bar
   const [searchResult, setSearchResult] = useState(null);
+  const [isCountryNotFound, setIsCountryNotFound] = useState(false);
   // state to keep track of the clicked card index
   const [clickedIndex, setClickedIndex] = useState(null);
 
@@ -47,16 +48,25 @@ export default function App() {
 
   return (
     <div className="p-6">
-      <SearchBar setSearchResult={setSearchResult} countries={data.countries} />
+      <SearchBar
+        setSearchResult={setSearchResult}
+        setIsCountryNotFound={setIsCountryNotFound}
+        countries={data.countries}
+      />
 
-      {/* Using display Grid to ensure the responsiveness of the cards on different screen sizes */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-3 justify-center text-center">
-        <CountryCard
-          setClickedIndex={setClickedIndex}
-          clickedIndex={clickedIndex}
-          countries={searchResult ? searchResult : data.countries}
-        />
-      </div>
+      {isCountryNotFound ? (
+        <div className="text-center">
+          <p className="text-4xl">Country not found...</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-3 justify-center text-center">
+          <CountryCard
+            setClickedIndex={setClickedIndex}
+            clickedIndex={clickedIndex}
+            countries={searchResult ? searchResult : data.countries}
+          />
+        </div>
+      )}
     </div>
   );
 }
