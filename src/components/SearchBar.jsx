@@ -10,7 +10,7 @@ export default function SearchBar({ setSearchResult, countries }) {
       <input
         className="border-2 focus:outline-none rounded-md w-full p-2 bg-slate-200"
         type="text"
-        placeholder="Type to Search..."
+        placeholder="Search Country..."
         onChange={handleSearchInput}
       />
     </div>
