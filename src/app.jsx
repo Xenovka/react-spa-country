@@ -1,12 +1,13 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
+import CountryCard from "./components/CountryCard";
 
 const GET_COUNTRIES = gql`
   query GetCountries {
     countries {
       code
       name
-      currency
+      currencies
       capital
       emoji
       continent {
@@ -28,15 +29,7 @@ export default function App() {
 
   return (
     <div className="flex flex-wrap gap-3 justify-between h-screen text-center p-6">
-      {data.countries.map(({ code, name, emoji, capital, currency }) => (
-        <div key={code} className="bg-slate-200 flex-1 min-w-[20%] rounded-md">
-          <h1>
-            {emoji} {name}
-          </h1>
-          <h1>{capital}</h1>
-          <h1>{currency}</h1>
-        </div>
-      ))}
+      <CountryCard countries={data.countries} />
     </div>
   );
 }
