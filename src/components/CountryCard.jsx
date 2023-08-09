@@ -28,7 +28,7 @@ export default function CountryCard({ setClickedIndex, clickedIndex, countries }
               <p>Currency: {currencies[0] || "N/A"}</p>
             </div>
             <div className="flex flex-col justify-center card-back">
-              <p className="text-center text-base px-2 font-semibold">
+              <p className="text-center text-sm px-2 font-semibold md:text-base">
                 This country is located in the continent of {continent.name}. The people in this country speak{" "}
                 {languages.length ? languages[0].name : "English"} as their native language.
               </p>
