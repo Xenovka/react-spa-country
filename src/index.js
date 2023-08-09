@@ -1,11 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import AOS from "aos";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill";
 
 import App from "./app";
 
 import "./index.css";
+import "aos/dist/aos.css";
+
+AOS.init();
 
 polyfillCountryFlagEmojis();
 

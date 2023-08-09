@@ -12,6 +12,7 @@ export default function CountryCard({ setClickedIndex, clickedIndex, countries }
           className={`flex-1 min-w-[20%] h-52 hover:shadow-lg hover:shadow-indigo-100 transition-shadow bg-slate-100 rounded-md card ${
             clickedIndex === index ? "flip" : ""
           }`}
+          data-aos="fade-down"
         >
           <div className="relative w-full h-full p-2 card-wrapper">
             <div className="flex flex-col justify-center  card-front text-left p-4">
