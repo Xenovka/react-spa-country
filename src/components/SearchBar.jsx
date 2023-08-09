@@ -1,5 +1,6 @@
 export default function SearchBar({ setSearchResult, countries }) {
   const handleSearchInput = (e) => {
+    // use toLowerCase() method to make the search case insensitive
     const input = e.target.value.toLowerCase();
     const result = countries.filter((country) => country.name.toLowerCase().includes(input));
     setSearchResult(result);

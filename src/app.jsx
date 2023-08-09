@@ -30,13 +30,17 @@ const GET_COUNTRIES = gql`
 export default function App() {
   const { data, loading, error } = useQuery(GET_COUNTRIES);
 
+  // state to keep track of the search result from the search bar
   const [searchResult, setSearchResult] = useState(null);
+  // state to keep track of the clicked card index
   const [clickedIndex, setClickedIndex] = useState(null);
 
   useEffect(() => {
+    // Reset clickedIndex value so the flip class also removed from the current card
     setClickedIndex(null);
   }, [searchResult]);
 
+  // Showing loading spinner while fetching countries data
   if (loading) return <Spinner />;
 
   if (error) return <p>Error : {error.message}</p>;
@@ -44,6 +48,8 @@ export default function App() {
   return (
     <div className="p-6">
       <SearchBar setSearchResult={setSearchResult} countries={data.countries} />
+
+      {/* Using display Grid to ensure the responsiveness of the cards on different screen sizes */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-3 justify-center text-center">
         <CountryCard
           setClickedIndex={setClickedIndex}
