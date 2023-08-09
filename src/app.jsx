@@ -3,6 +3,7 @@ import { useQuery, gql } from "@apollo/client";
 
 import CountryCard from "./components/CountryCard";
 import SearchBar from "./components/SearchBar";
+import Spinner from "./components/Spinner";
 
 const GET_COUNTRIES = gql`
   query {
@@ -36,7 +37,7 @@ export default function App() {
     setClickedIndex(null);
   }, [searchResult]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Spinner />;
 
   if (error) return <p>Error : {error.message}</p>;
 

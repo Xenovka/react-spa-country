@@ -1,6 +1,8 @@
 export default function CountryCard({ setClickedIndex, clickedIndex, countries }) {
   const onCardClicked = (index) => {
     setClickedIndex(index);
+    document.querySelectorAll(".card")[index].style.opacity = 1;
+    document.querySelectorAll(".card")[index].style.transform = "translateY(0px)";
   };
 
   return (
@@ -9,7 +11,7 @@ export default function CountryCard({ setClickedIndex, clickedIndex, countries }
         <div
           onClick={() => onCardClicked(index)}
           key={code}
-          className={`flex-1 min-w-[20%] h-52 hover:shadow-lg hover:shadow-indigo-100 transition-shadow bg-slate-100 rounded-md card ${
+          className={`min-w-[20%] h-52 hover:shadow-lg hover:shadow-indigo-100 transition-shadow bg-slate-100 rounded-md card ${
             clickedIndex === index ? "flip" : ""
           }`}
           data-aos="fade-down"
