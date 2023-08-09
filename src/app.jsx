@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery, gql } from "@apollo/client";
+
 import CountryCard from "./components/CountryCard";
+import SearchBar from "./components/SearchBar";
 
 const GET_COUNTRIES = gql`
-  query GetCountries {
+  query {
     countries {
+      states {
+        name
+      }
       code
       name
       currencies
@@ -15,6 +20,7 @@ const GET_COUNTRIES = gql`
       }
       languages {
         name
+        native
       }
     }
   }
@@ -23,13 +29,27 @@ const GET_COUNTRIES = gql`
 export default function App() {
   const { data, loading, error } = useQuery(GET_COUNTRIES);
 
+  const [searchResult, setSearchResult] = useState(null);
+  const [clickedIndex, setClickedIndex] = useState(null);
+
+  useEffect(() => {
+    setClickedIndex(null);
+  }, [searchResult]);
+
   if (loading) return <p>Loading...</p>;
 
   if (error) return <p>Error : {error.message}</p>;
 
   return (
-    <div className="flex flex-wrap gap-3 justify-between h-screen text-center p-6">
-      <CountryCard countries={data.countries} />
+    <div className="p-6">
+      <SearchBar setSearchResult={setSearchResult} countries={data.countries} />
+      <div className="flex flex-wrap gap-3 justify-between text-center">
+        <CountryCard
+          setClickedIndex={setClickedIndex}
+          clickedIndex={clickedIndex}
+          countries={searchResult ? searchResult : data.countries}
+        />
+      </div>
     </div>
   );
 }

@@ -1,8 +1,4 @@
-import { useState } from "react";
-
-export default function CountryCard({ countries }) {
-  const [clickedIndex, setClickedIndex] = useState(null);
-
+export default function CountryCard({ setClickedIndex, clickedIndex, countries }) {
   const onCardClicked = (index) => {
     setClickedIndex(index);
   };
