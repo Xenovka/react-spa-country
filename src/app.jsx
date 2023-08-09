@@ -54,11 +54,13 @@ export default function App() {
         countries={data.countries}
       />
 
+      {/* Check whether the country that user search for is found or not */}
       {isCountryNotFound ? (
         <div className="text-center">
           <p className="text-4xl">Country not found...</p>
         </div>
       ) : (
+        //Using display Grid to ensure the responsiveness of the cards on different screen sizes
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-3 justify-center text-center">
           <CountryCard
             setClickedIndex={setClickedIndex}
