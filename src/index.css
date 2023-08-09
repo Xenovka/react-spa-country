@@ -20,10 +20,6 @@ code {
 }
 
 /* CSS of the Card component */
-.card {
-  perspective: 1000px;
-}
-
 .card-wrapper {
   transition: transform 0.5s;
   transform-style: preserve-3d;
