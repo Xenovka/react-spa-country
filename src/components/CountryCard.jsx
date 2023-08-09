@@ -20,8 +20,8 @@ export default function CountryCard({ setClickedIndex, clickedIndex, countries }
             </div>
             <div className="flex flex-col justify-center bg-slate-400 card-back">
               <p className="text-center text-base px-2 text-white font-semibold">
-                This country is located in the continent of {continent.name}. The people in this country speak
-                {languages ? " English" : languages[0].name} as their native language.
+                This country is located in the continent of {continent.name}. The people in this country speak{" "}
+                {languages.length ? languages[0].name : "English"} as their native language.
               </p>
             </div>
           </div>
