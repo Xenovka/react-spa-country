@@ -1,8 +1,12 @@
 export default function CountryCard({ setClickedIndex, clickedIndex, countries }) {
   const onCardClicked = (index) => {
     setClickedIndex(index);
-    document.querySelectorAll(".card")[index].style.opacity = 1;
-    document.querySelectorAll(".card")[index].style.transform = "translateY(0px)";
+
+    const DOMCard = document.querySelectorAll(".card")[index];
+    DOMCard.classList.toggle("flip");
+    // Revert back to default styling of the card to prevent AOS make this card disappear when clicked
+    DOMCard.style.opacity = 1;
+    DOMCard.style.transform = "translateY(0px)";
   };
 
   return (
